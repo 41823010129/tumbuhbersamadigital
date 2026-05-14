@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Tumbuh Bersama Digital</title>
+  <link rel="icon" type="image/png" href="Logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --red: #e4153e;
+      --red-dark: #b01030;
+      --red-light: #ff3a5c;
+      --red-glow: rgba(228,21,62,0.35);
+      --bg: #07070f;
+      --bg2: #0d0d1a;
+      --bg3: #12121f;
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.08);
+      --text: #f0f0f8;
+      --text-muted: #888;
+      --text-dim: #bbb;
+      --white: #fff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 99px; }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; position: relative; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(228,21,62,0.12); border: 1px solid rgba(228,21,62,0.3);
+      color: var(--red-light); padding: 6px 16px; border-radius: 99px;
+      font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: clamp(28px, 5vw, 52px); font-weight: 800;
+      line-height: 1.15; margin-bottom: 16px;
+    }
+    .section-sub { font-size: 17px; color: var(--text-dim); max-width: 580px; }
+    .gradient-text {
+      background: linear-gradient(135deg, #ff3a5c, #e4153e, #ff6b35);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 12px; font-family: 'Poppins', sans-serif;
+      font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: none;
+      transition: all .3s ease; border: none; position: relative; overflow: hidden;
+    }
+    .btn::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(255,255,255,0.1); opacity: 0; transition: opacity .3s;
+    }
+    .btn:hover::after { opacity: 1; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--red-light), var(--red));
+      color: #fff; box-shadow: 0 4px 24px var(--red-glow);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 36px var(--red-glow); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-outline:hover { border-color: var(--red); color: var(--red-light); transform: translateY(-2px); }
+    .btn-wa {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: #fff; box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+    }
+    .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(37,211,102,0.4); }
+
+    /* ── DECORATIONS ── */
+    .mesh-bg {
+      position: absolute; pointer-events: none; z-index: 0;
+      border-radius: 50%; filter: blur(80px); opacity: 0.18;
+    }
+    .glow-dot {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      animation: pulse-glow 4s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%,100% { opacity: .3; transform: scale(1); }
+      50% { opacity: .6; transform: scale(1.15); }
+    }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 18px 0; transition: all .4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(7,7,15,0.85); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 12px 0; box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px; text-decoration: none;
+    }
+    .nav-logo img { height: 128px; width: auto; }
+    .nav-brand { font-size: 15px; font-weight: 700; color: var(--white); line-height: 1.2; }
+    .nav-brand span { color: var(--red-light); }
+    .nav-links {
+      display: flex; align-items: center; gap: 4px; list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500;
+      padding: 8px 14px; border-radius: 8px; transition: all .2s;
+    }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+    .nav-cta { display: flex; align-items: center; gap: 10px; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 6px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px; background: var(--white);
+      border-radius: 2px; transition: all .3s;
+    }
+    .mobile-menu {
+      display: none; position: fixed; top: 72px; left: 0; right: 0;
+      background: rgba(7,7,15,0.96); backdrop-filter: blur(20px);
+      padding: 20px 24px 28px; border-bottom: 1px solid rgba(255,255,255,0.06);
+      z-index: 999;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block; color: var(--text-dim); text-decoration: none;
+      font-size: 15px; font-weight: 500; padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .mobile-menu a:hover { color: var(--white); }
+    .mobile-menu .mob-btns { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; position: relative;
+      padding-top: 100px; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 60% 40%, rgba(228,21,62,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(228,21,62,0.07) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0; opacity: 0.04;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(228,21,62,0.1); border: 1px solid rgba(228,21,62,0.25);
+      padding: 8px 18px; border-radius: 99px; margin-bottom: 28px;
+      font-size: 13px; color: var(--red-light); font-weight: 500;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--red);
+      animation: pulse-glow 2s infinite;
+    }
+    .hero-title {
+      font-size: clamp(36px, 6vw, 72px); font-weight: 900;
+      line-height: 1.08; letter-spacing: -1px; margin-bottom: 24px;
+    }
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px); color: var(--text-dim);
+      max-width: 580px; margin-bottom: 40px; font-weight: 400; line-height: 1.7;
+    }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 56px; }
+    .hero-stats {
+      display: flex; flex-wrap: wrap; gap: 32px;
+      border-top: 1px solid rgba(255,255,255,0.06); padding-top: 32px;
+    }
+    .stat-item {}
+    .stat-num { font-size: 32px; font-weight: 800; color: var(--white); }
+    .stat-num span { color: var(--red-light); }
+    .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+    .hero-float {
+      position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+      z-index: 1; width: 45%; display: none;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-section {
+      padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.015); overflow: hidden;
+    }
+    .marquee-track {
+      display: flex; gap: 48px; animation: marquee 28s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 1px; flex-shrink: 0;
+    }
+    .marquee-item i { color: var(--red); }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-card-main {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 24px; padding: 36px; backdrop-filter: blur(12px);
+      position: relative; overflow: hidden;
+    }
+    .about-card-main::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+    }
+    .about-icon-row {
+      display: flex; gap: 12px; margin-bottom: 24px;
+    }
+    .about-icon-box {
+      width: 48px; height: 48px; border-radius: 12px; display: flex;
+      align-items: center; justify-content: center; font-size: 20px;
+    }
+    .about-metrics {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px;
+    }
+    .metric-box {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px; padding: 16px;
+    }
+    .metric-val { font-size: 26px; font-weight: 800; }
+    .metric-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .about-float-card {
+      position: absolute; bottom: -24px; right: -24px;
+      background: rgba(228,21,62,0.12); border: 1px solid rgba(228,21,62,0.3);
+      border-radius: 16px; padding: 16px 20px; backdrop-filter: blur(12px);
+    }
+    .about-float-card .label { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+    .about-float-card .val { font-size: 20px; font-weight: 700; color: var(--red-light); }
+    .about-features { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+    .about-feat {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 14px; padding: 16px 20px; transition: all .3s;
+    }
+    .about-feat:hover {
+      border-color: rgba(228,21,62,0.3); transform: translateX(4px);
+      box-shadow: 0 4px 24px rgba(228,21,62,0.08);
+    }
+    .feat-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(228,21,62,0.1); display: flex; align-items: center;
+      justify-content: center; color: var(--red-light); font-size: 18px; flex-shrink: 0;
+    }
+    .feat-text h4 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+    .feat-text p { font-size: 13px; color: var(--text-muted); }
+
+    /* ── SERVICES ── */
+    #services { background: var(--bg2); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 24px; margin-top: 56px;
+    }
+    .service-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 20px; padding: 32px; position: relative; overflow: hidden;
+      transition: all .3s ease; cursor: default;
+    }
+    .service-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(228,21,62,0.05) 0%, transparent 60%);
+      opacity: 0; transition: opacity .3s;
+    }
+    .service-card:hover { transform: translateY(-6px); border-color: rgba(228,21,62,0.3);
+      box-shadow: 0 20px 60px rgba(228,21,62,0.12); }
+    .service-card:hover::before { opacity: 1; }
+    .service-card:hover .service-icon { background: rgba(228,21,62,0.2); box-shadow: 0 0 24px var(--red-glow); }
+    .service-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: rgba(228,21,62,0.1); display: flex; align-items: center;
+      justify-content: center; font-size: 24px; color: var(--red-light);
+      margin-bottom: 20px; transition: all .3s;
+    }
+    .service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .service-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+    .service-tag {
+      font-size: 11px; font-weight: 500; padding: 4px 10px;
+      background: rgba(228,21,62,0.08); border: 1px solid rgba(228,21,62,0.2);
+      color: var(--red-light); border-radius: 99px;
+    }
+    .service-arrow {
+      position: absolute; top: 28px; right: 28px;
+      color: rgba(255,255,255,0.15); font-size: 16px; transition: all .3s;
+    }
+    .service-card:hover .service-arrow { color: var(--red-light); transform: translate(3px,-3px); }
+
+    /* ── PRICING ── */
+    #pricing { background: var(--bg); }
+    .pricing-tabs {
+      display: flex; gap: 8px; flex-wrap: wrap; margin: 40px 0 48px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px; padding: 6px; width: fit-content;
+    }
+    .pricing-tab {
+      padding: 10px 20px; border-radius: 10px; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: all .25s; color: var(--text-muted); border: none;
+      background: none; font-family: 'Poppins', sans-serif;
+    }
+    .pricing-tab.active {
+      background: linear-gradient(135deg, var(--red-light), var(--red));
+      color: #fff; box-shadow: 0 4px 16px var(--red-glow);
+    }
+    .pricing-panels { }
+    .pricing-panel { display: none; }
+    .pricing-panel.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .price-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 24px; padding: 36px; position: relative; overflow: hidden;
+      transition: all .35s ease;
+    }
+    .price-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 80px rgba(228,21,62,0.15);
+      border-color: rgba(228,21,62,0.4);
+    }
+    .price-card.featured {
+      border-color: rgba(228,21,62,0.5);
+      background: linear-gradient(135deg, rgba(228,21,62,0.08), rgba(228,21,62,0.03));
+      box-shadow: 0 0 60px rgba(228,21,62,0.12);
+    }
+    .price-card.featured::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), var(--red-light), transparent);
+    }
+    .price-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      padding: 5px 12px; border-radius: 99px; margin-bottom: 20px;
+    }
+    .badge-bestseller { background: rgba(228,21,62,0.15); color: var(--red-light); border: 1px solid rgba(228,21,62,0.3); }
+    .badge-umkm { background: rgba(22,163,74,0.12); color: #4ade80; border: 1px solid rgba(22,163,74,0.25); }
+    .badge-enterprise { background: rgba(139,92,246,0.12); color: #a78bfa; border: 1px solid rgba(139,92,246,0.25); }
+    .badge-affordable { background: rgba(234,179,8,0.12); color: #facc15; border: 1px solid rgba(234,179,8,0.25); }
+    .badge-popular { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.25); }
+    .price-name { font-size: 15px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
+    .price-amount { font-size: 36px; font-weight: 900; color: var(--white); line-height: 1; margin-bottom: 6px; }
+    .price-amount sup { font-size: 18px; font-weight: 600; vertical-align: super; margin-right: 2px; color: var(--red-light); }
+    .price-period { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
+    .price-monthly {
+      display: inline-flex; align-items: center;
+      background: rgba(228,21,62,0.1); border: 1px solid rgba(228,21,62,0.25);
+      color: var(--red-light); padding: 2px 10px; border-radius: 99px;
+      font-size: 11px; font-weight: 700; margin-left: 6px; white-space: nowrap;
+    }
+    .price-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+    .price-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; }
+    .price-features li .check { color: var(--red-light); flex-shrink: 0; margin-top: 1px; }
+    .price-features li .cross { color: var(--text-muted); flex-shrink: 0; margin-top: 1px; }
+    .price-features li.dim { color: var(--text-muted); }
+
+    /* ── PORTFOLIO ── */
+    #portfolio { background: var(--bg2); }
+    .portfolio-filter {
+      display: flex; gap: 8px; flex-wrap: wrap; margin: 40px 0 48px;
+    }
+    .filter-btn {
+      padding: 8px 18px; border-radius: 99px; font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all .25s; color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.1); background: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: rgba(228,21,62,0.1); border-color: rgba(228,21,62,0.4); color: var(--red-light);
+    }
+    .portfolio-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px;
+    }
+    .portfolio-card {
+      border-radius: 20px; overflow: hidden; position: relative;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      transition: all .35s ease; group: true;
+    }
+    .portfolio-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); border-color: rgba(228,21,62,0.3); }
+    .portfolio-thumb {
+      width: 100%; aspect-ratio: 16/10; display: flex; align-items: center;
+      justify-content: center; font-size: 52px; position: relative; overflow: hidden;
+    }
+    .portfolio-overlay {
+      position: absolute; inset: 0; background: rgba(228,21,62,0.15);
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      opacity: 0; transition: opacity .3s; backdrop-filter: blur(4px);
+    }
+    .portfolio-card:hover .portfolio-overlay { opacity: 1; }
+    .overlay-btn {
+      background: var(--white); color: var(--red); border: none; border-radius: 10px;
+      padding: 10px 20px; font-size: 13px; font-weight: 600; cursor: pointer;
+      font-family: 'Poppins', sans-serif; transition: all .2s;
+    }
+    .overlay-btn:hover { background: var(--red); color: var(--white); }
+    .portfolio-info { padding: 20px 24px 24px; }
+    .portfolio-cat { font-size: 11px; font-weight: 600; color: var(--red-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .portfolio-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .portfolio-desc { font-size: 13px; color: var(--text-muted); }
+    .portfolio-tech { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+    .tech-tag { font-size: 11px; padding: 3px 10px; border-radius: 6px; background: rgba(255,255,255,0.05); color: var(--text-muted); }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--bg); }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px; margin-top: 56px;
+    }
+    .testi-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 20px; padding: 28px; transition: all .3s;
+    }
+    .testi-card:hover { border-color: rgba(228,21,62,0.25); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(228,21,62,0.08); }
+    .testi-stars { display: flex; gap: 4px; color: #f59e0b; font-size: 14px; margin-bottom: 16px; }
+    .testi-quote { font-size: 14.5px; color: var(--text-dim); line-height: 1.75; margin-bottom: 24px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .testi-name { font-size: 14px; font-weight: 700; }
+    .testi-role { font-size: 12px; color: var(--text-muted); }
+
+    /* ── FAQ ── */
+    #faq { background: var(--bg2); }
+    .faq-list { max-width: 760px; margin: 56px auto 0; display: flex; flex-direction: column; gap: 14px; }
+    .faq-item {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 16px; overflow: hidden; transition: border-color .3s;
+    }
+    .faq-item.open { border-color: rgba(228,21,62,0.3); }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 24px; cursor: pointer; gap: 16px;
+    }
+    .faq-q span { font-size: 15px; font-weight: 600; flex: 1; }
+    .faq-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(228,21,62,0.1); display: flex; align-items: center;
+      justify-content: center; color: var(--red-light); font-size: 14px;
+      flex-shrink: 0; transition: all .3s;
+    }
+    .faq-item.open .faq-icon { background: rgba(228,21,62,0.2); transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s;
+      font-size: 14px; color: var(--text-muted); line-height: 1.75;
+    }
+    .faq-a.open { max-height: 400px; padding: 0 24px 22px; }
+
+    /* ── CTA ── */
+    #cta {
+      background: var(--bg); padding: 100px 0;
+      position: relative; overflow: hidden;
+    }
+    .cta-inner {
+      text-align: center; position: relative; z-index: 1;
+      background: var(--glass); border: 1px solid rgba(228,21,62,0.2);
+      border-radius: 32px; padding: 72px 48px;
+      box-shadow: 0 0 80px rgba(228,21,62,0.08);
+    }
+    .cta-inner::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), var(--red-light), var(--red), transparent);
+    }
+    .cta-title { font-size: clamp(28px, 5vw, 52px); font-weight: 900; margin-bottom: 16px; }
+    .cta-sub { font-size: 17px; color: var(--text-dim); max-width: 500px; margin: 0 auto 40px; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2); border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 72px 0 32px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 56px;
+    }
+    .footer-brand {}
+    .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .footer-logo img { height: 36px; width: auto; }
+    .footer-logo-name { font-size: 14px; font-weight: 700; }
+    .footer-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.75; margin-bottom: 24px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .social-btn {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); font-size: 15px; text-decoration: none;
+      transition: all .25s;
+    }
+    .social-btn:hover { background: rgba(228,21,62,0.1); border-color: rgba(228,21,62,0.3); color: var(--red-light); transform: translateY(-2px); }
+    .footer-col h4 { font-size: 14px; font-weight: 700; margin-bottom: 20px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13.5px; transition: color .2s; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-contact-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; }
+    .footer-contact-item i { color: var(--red-light); margin-top: 2px; font-size: 14px; flex-shrink: 0; }
+    .footer-contact-item span { font-size: 13px; color: var(--text-muted); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 24px; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: gap;
+    }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-copy span { color: var(--red-light); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 13px; color: var(--text-muted); text-decoration: none; }
+    .footer-legal a:hover { color: var(--white); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up-delay-1 { transition-delay: .1s; }
+    .fade-up-delay-2 { transition-delay: .2s; }
+    .fade-up-delay-3 { transition-delay: .3s; }
+    .fade-up-delay-4 { transition-delay: .4s; }
+
+    /* ── BACK TO TOP ── */
+    #back-top {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--red-light), var(--red));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 16px; cursor: pointer; border: none;
+      box-shadow: 0 4px 20px var(--red-glow); opacity: 0; pointer-events: none;
+      transition: all .3s; text-decoration: none;
+    }
+    #back-top.show { opacity: 1; pointer-events: all; }
+    #back-top:hover { transform: translateY(-3px); box-shadow: 0 8px 28px var(--red-glow); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 72px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-btns { flex-direction: column; align-items: flex-start; }
+      .hero-stats { gap: 24px; }
+      .pricing-tabs { width: 100%; }
+      .pricing-tab { flex: 1; text-align: center; padding: 10px 12px; font-size: 13px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .cta-inner { padding: 48px 24px; }
+      .cta-btns { flex-direction: column; align-items: center; }
+    }
+    @media (max-width: 480px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .pricing-panel.active { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="Logo.png" alt="Logo" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">Tentang Kami</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#testimonials">Testimoni</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="padding:10px 18px;font-size:13px;">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="#cta" class="btn btn-primary" style="padding:10px 18px;font-size:13px;">
+          Konsultasi Sekarang
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">Tentang Kami</a>
+  <a href="#services">Services</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#testimonials">Testimoni</a>
+  <a href="#faq">FAQ</a>
+  <div class="mob-btns">
+    <a href="https://wa.me/6285117758656" class="btn btn-wa" style="justify-content:center;">
+      <i class="fab fa-whatsapp"></i> Hubungi WhatsApp
+    </a>
+    <a href="#cta" class="btn btn-primary" style="justify-content:center;">
+      Konsultasi Sekarang
+    </a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="glow-dot" style="width:400px;height:400px;background:radial-gradient(circle,rgba(228,21,62,0.18),transparent 70%);top:-100px;right:-100px;"></div>
+  <div class="glow-dot" style="width:300px;height:300px;background:radial-gradient(circle,rgba(228,21,62,0.1),transparent 70%);bottom:0;left:-80px;animation-delay:2s;"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge fade-up">
+        <span class="dot"></span>
+        Digital Agency #1 untuk UMKM & Startup Indonesia
+      </div>
+      <h1 class="hero-title fade-up fade-up-delay-1">
+        Wujudkan <span class="gradient-text">Visi Digital</span><br />Bisnis Anda Bersama Kami
+      </h1>
+      <p class="hero-sub fade-up fade-up-delay-2">
+        Dari website profesional, aplikasi mobile, platform tiket event, hingga solusi AI — kami hadir untuk mengakselerasi pertumbuhan bisnis digital Anda dengan teknologi terdepan dan harga terjangkau.
+      </p>
+      <div class="hero-btns fade-up fade-up-delay-3">
+        <a href="#cta" class="btn btn-primary">
+          <i class="fas fa-rocket"></i> Konsultasi Gratis
+        </a>
+        <a href="#portfolio" class="btn btn-outline">
+          <i class="fas fa-eye"></i> Lihat Portfolio
+        </a>
+        <a href="https://wa.me/6285117758656" class="btn btn-wa">
+          <i class="fab fa-whatsapp"></i> Hubungi WhatsApp
+        </a>
+      </div>
+      <div class="hero-stats fade-up fade-up-delay-4">
+        <div class="stat-item">
+          <div class="stat-num">200<span>+</span></div>
+          <div class="stat-label">Project Selesai</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">150<span>+</span></div>
+          <div class="stat-label">Klien Puas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5<span>+</span></div>
+          <div class="stat-label">Tahun Pengalaman</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">98<span>%</span></div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><i class="fas fa-ticket"></i> Tiketing Event Platform</div>
+    <div class="marquee-item"><i class="fas fa-globe"></i> Web Development</div>
+    <div class="marquee-item"><i class="fas fa-store"></i> Website UMKM</div>
+    <div class="marquee-item"><i class="fas fa-mobile-alt"></i> Mobile App</div>
+    <div class="marquee-item"><i class="fas fa-cogs"></i> ERP System</div>
+    <div class="marquee-item"><i class="fas fa-video"></i> AI Video Generator</div>
+    <div class="marquee-item"><i class="fas fa-robot"></i> AI Chatbot</div>
+    <div class="marquee-item"><i class="fas fa-chart-line"></i> Digital Marketing</div>
+    <div class="marquee-item"><i class="fas fa-ticket"></i> Tiketing Event Platform</div>
+    <div class="marquee-item"><i class="fas fa-globe"></i> Web Development</div>
+    <div class="marquee-item"><i class="fas fa-store"></i> Website UMKM</div>
+    <div class="marquee-item"><i class="fas fa-mobile-alt"></i> Mobile App</div>
+    <div class="marquee-item"><i class="fas fa-cogs"></i> ERP System</div>
+    <div class="marquee-item"><i class="fas fa-video"></i> AI Video Generator</div>
+    <div class="marquee-item"><i class="fas fa-robot"></i> AI Chatbot</div>
+    <div class="marquee-item"><i class="fas fa-chart-line"></i> Digital Marketing</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="mesh-bg" style="width:500px;height:500px;background:radial-gradient(circle,rgba(228,21,62,0.15),transparent);top:-100px;right:-150px;"></div>
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual fade-up">
+        <div class="about-card-main">
+          <div class="about-icon-row">
+            <div class="about-icon-box" style="background:rgba(228,21,62,0.1);color:#ff3a5c;"><i class="fas fa-rocket"></i></div>
+            <div class="about-icon-box" style="background:rgba(59,130,246,0.1);color:#60a5fa;"><i class="fas fa-code"></i></div>
+            <div class="about-icon-box" style="background:rgba(22,163,74,0.1);color:#4ade80;"><i class="fas fa-chart-line"></i></div>
+          </div>
+          <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Solusi Digital Terpadu</h3>
+          <p style="font-size:13.5px;color:var(--text-muted);line-height:1.7;">Kami menghadirkan ekosistem digital lengkap untuk bisnis Anda — dari branding, website, aplikasi, hingga sistem manajemen berbasis AI.</p>
+          <div class="about-metrics">
+            <div class="metric-box">
+              <div class="metric-val gradient-text">200+</div>
+              <div class="metric-label">Project Delivered</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val gradient-text">98%</div>
+              <div class="metric-label">Client Satisfaction</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val gradient-text">5+</div>
+              <div class="metric-label">Tahun Pengalaman</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val gradient-text">30+</div>
+              <div class="metric-label">Tim Profesional</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-float-card">
+          <div class="label"><i class="fas fa-star" style="color:#f59e0b;"></i> Rating Klien</div>
+          <div class="val">4.9 / 5.0</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-label fade-up"><i class="fas fa-building"></i> Tentang Kami</div>
+        <h2 class="section-title fade-up fade-up-delay-1">
+          Partner Digital <span class="gradient-text">Terpercaya</span><br />untuk Bisnis Anda
+        </h2>
+        <p class="section-sub fade-up fade-up-delay-2" style="margin-bottom:32px;">
+          CV Tumbuh Bersama Digital adalah perusahaan teknologi dan digital agency yang berdedikasi membantu UMKM, startup, dan bisnis menengah Indonesia bertransformasi secara digital dengan solusi inovatif dan terjangkau.
+        </p>
+        <div class="about-features fade-up fade-up-delay-3">
+          <div class="about-feat">
+            <div class="feat-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="feat-text">
+              <h4>Garansi Kualitas & Revisi</h4>
+              <p>Setiap project disertai garansi kualitas dan unlimited revisi selama masa pengerjaan.</p>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon"><i class="fas fa-headset"></i></div>
+            <div class="feat-text">
+              <h4>Support 24/7</h4>
+              <p>Tim support kami siap membantu Anda kapanpun dibutuhkan via WhatsApp & email.</p>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon"><i class="fas fa-bolt"></i></div>
+            <div class="feat-text">
+              <h4>Pengerjaan Cepat & Tepat Waktu</h4>
+              <p>Komitmen kami terhadap deadline adalah prioritas utama di setiap project.</p>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon"><i class="fas fa-piggy-bank"></i></div>
+            <div class="feat-text">
+              <h4>Harga Transparan & Terjangkau</h4>
+              <p>Tidak ada biaya tersembunyi. Semua biaya jelas sejak awal kontrak.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto;">
+      <div class="section-label fade-up"><i class="fas fa-layer-group"></i> Layanan Kami</div>
+      <h2 class="section-title fade-up fade-up-delay-1">Solusi Digital <span class="gradient-text">Lengkap</span><br />untuk Semua Kebutuhan</h2>
+      <p class="section-sub fade-up fade-up-delay-2" style="margin:0 auto;">Dari platform tiketing event hingga sistem AI canggih — semua tersedia dalam satu atap.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card fade-up">
+        <i class="fas fa-arrow-up-right-from-square service-arrow"></i>
+        <div class="service-icon"><i class="fas fa-ticket-alt"></i></div>
+        <h3>Tiketing Event Platform</h3>
+        <p>Platform tiket event digital — manajemen tiket, QR code, laporan real-time, payment gateway, dan dashboard organizer lengkap seperti yang dibangun CV Tumbuh Bersama Digital.</p>
+        <div class="service-tags">
+          <span class="service-tag">QR Ticket</span>
+          <span class="service-tag">Payment Gateway</span>
+          <span class="service-tag">Dashboard</span>
+        </div>
+      </div>
+
+      <div class="service-card fade-up fade-up-delay-1">
+        <i class="fas fa-arrow-up-right-from-square service-arrow"></i>
+        <div class="service-icon"><i class="fas fa-globe"></i></div>
+        <h3>Pembuatan Website</h3>
+        <p>Website profesional, company profile, landing page, toko online, dan blog yang modern, responsif, dan SEO-friendly untuk meningkatkan brand Anda.</p>
+        <div class="service-tags">
+          <span class="service-tag">Responsive</span>
+          <span class="service-tag">SEO Ready</span>
+          <span class="service-tag">Fast Load</span>
+        </div>
+      </div>
+
+      <div class="service-card fade-up fade-up-delay-2">
+        <i class="fas fa-arrow-up-right-from-square service-arrow"></i>
+        <div class="service-icon"><i class="fas fa-store"></i></div>
+        <h3>Website UMKM Subscription</h3>
+        <p>Solusi website berlangganan untuk UMKM — tidak perlu bayar mahal di awal, cukup bayar bulanan dan nikmati website profesional siap pakai.</p>
+        <div class="service-tags">
+          <span class="service-tag">Subscription</span>
+          <span class="service-tag">UMKM</span>
+          <span class="service-tag">Terjangkau</span>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <i class="fas fa-arrow-up-right-from-square service-arrow"></i>
+        <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>Pembuatan Aplikasi</h3>
+        <p>Aplikasi mobile Android & iOS yang custom, scalable, dan user-friendly sesuai kebutuhan bisnis Anda dari awal hingga publishing ke Play Store & App Store.</p>
+        <div class="service-tags">
+          <span class="service-tag">Android</span>
+          <span class="service-tag">iOS</span>
+          <span class="service-tag">Cross-Platform</span>
+        </div>
+      </div>
+
+      <div class="service-card fade-up fade-up-delay-1">
+        <i class="fas fa-arrow-up-right-from-square service-arrow"></i>
+        <div class="service-icon"><i class="fas fa-cogs"></i></div>
+        <h3>ERP System</h3>
+        <p>Sistem ERP terintegrasi untuk mengelola operasional bisnis — inventory, keuangan, HR, CRM, dan laporan manajemen dalam satu platform terpadu.</p>
+        <div class="service-tags">
+          <span class="service-tag">Inventory</span>
+          <span class="service-tag">Keuangan</span>
+          <span class="service-tag">CRM</span>
+        </div>
+      </div>
+
+      <div class="service-card fade-up fade-up-delay-2">
+        <i class="fas fa-arrow-up-right-from-square service-arrow"></i>
+        <div class="service-icon"><i class="fas fa-video"></i></div>
+        <h3>AI Video Generator</h3>
+        <p>Buat konten video marketing, promosi produk, dan konten media sosial secara otomatis menggunakan teknologi AI terdepan — hemat waktu & biaya produksi.</p>
+        <div class="service-tags">
+          <span class="service-tag">AI-Powered</span>
+          <span class="service-tag">Auto Generate</span>
+          <span class="service-tag">Marketing</span>
+        </div>
+      </div>
+
+      <div class="service-card fade-up" style="grid-column: span 1;">
+        <i class="fas fa-arrow-up-right-from-square service-arrow"></i>
+        <div class="service-icon"><i class="fas fa-robot"></i></div>
+        <h3>AI Chatbot</h3>
+        <p>Chatbot berbasis AI yang cerdas untuk customer service 24/7, WhatsApp bot, website live chat, dan asisten virtual yang terintegrasi dengan sistem bisnis Anda.</p>
+        <div class="service-tags">
+          <span class="service-tag">WhatsApp Bot</span>
+          <span class="service-tag">24/7</span>
+          <span class="service-tag">AI Smart</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="section">
+  <div class="mesh-bg" style="width:600px;height:600px;background:radial-gradient(circle,rgba(228,21,62,0.1),transparent);bottom:-200px;left:-200px;"></div>
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto;">
+      <div class="section-label fade-up"><i class="fas fa-tags"></i> Rate Card</div>
+      <h2 class="section-title fade-up fade-up-delay-1">Harga <span class="gradient-text">Transparan</span><br />Tanpa Biaya Tersembunyi</h2>
+      <p class="section-sub fade-up fade-up-delay-2" style="margin:0 auto;">Pilih paket yang sesuai kebutuhan dan anggaran Anda. Semua paket sudah termasuk konsultasi gratis.</p>
+    </div>
+
+    <div class="pricing-tabs fade-up">
+      <button class="pricing-tab active" data-panel="web">Website</button>
+      <button class="pricing-tab" data-panel="umkm">UMKM Sub</button>
+      <button class="pricing-tab" data-panel="app">Aplikasi</button>
+      <button class="pricing-tab" data-panel="erp">ERP</button>
+      <button class="pricing-tab" data-panel="chatbot">AI Chatbot</button>
+      <button class="pricing-tab" data-panel="video">AI Video</button>
+      <button class="pricing-tab" data-panel="event">Event Tiket</button>
+    </div>
+
+    <!-- WEBSITE -->
+    <div class="pricing-panel active" id="panel-web">
+      <div class="price-card fade-up">
+        <div class="price-badge badge-affordable"><i class="fas fa-seedling"></i> Starter</div>
+        <div class="price-name">Landing Page</div>
+        <div class="price-amount"><sup>Rp</sup>2,4 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">≈ Rp 200rb / bln</span></div>
+        <div class="price-desc">Build + hosting + domain sudah included — bayar tahunan, lebih hemat</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> 1 halaman landing page</li>
+          <li><i class="fas fa-check check"></i> Desain modern & responsif</li>
+          <li><i class="fas fa-check check"></i> Form kontak WhatsApp</li>
+          <li><i class="fas fa-check check"></i> Hosting 1 tahun gratis</li>
+          <li><i class="fas fa-check check"></i> Domain .com gratis 1 tahun</li>
+          <li><i class="fas fa-check check"></i> Revisi hingga 3x</li>
+          <li class="dim"><i class="fas fa-times cross"></i> CMS / Blog</li>
+          <li class="dim"><i class="fas fa-times cross"></i> Multi halaman</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Pilih Paket</a>
+      </div>
+
+      <div class="price-card featured fade-up fade-up-delay-1">
+        <div class="price-badge badge-bestseller"><i class="fas fa-fire"></i> Best Seller</div>
+        <div class="price-name">Company Profile</div>
+        <div class="price-amount"><sup>Rp</sup>6 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">≈ Rp 500rb / bln</span></div>
+        <div class="price-desc">Build + hosting + domain + maintenance — paket paling worth it untuk bisnis</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> 5–8 halaman lengkap</li>
+          <li><i class="fas fa-check check"></i> Desain premium custom</li>
+          <li><i class="fas fa-check check"></i> CMS mudah dikelola</li>
+          <li><i class="fas fa-check check"></i> Blog & artikel</li>
+          <li><i class="fas fa-check check"></i> SEO On-Page dasar</li>
+          <li><i class="fas fa-check check"></i> Hosting + domain 1 tahun</li>
+          <li><i class="fas fa-check check"></i> WhatsApp & Google Maps</li>
+          <li><i class="fas fa-check check"></i> Revisi hingga 5x</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-primary" style="width:100%;justify-content:center;">Pilih Paket</a>
+      </div>
+
+      <div class="price-card fade-up fade-up-delay-2">
+        <div class="price-badge badge-enterprise"><i class="fas fa-crown"></i> Enterprise</div>
+        <div class="price-name">E-Commerce Full</div>
+        <div class="price-amount"><sup>Rp</sup>12 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">≈ Rp 1 Jt / bln</span></div>
+        <div class="price-desc">Toko online penuh — build + payment gateway + hosting + maintenance tahunan</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Desain custom premium</li>
+          <li><i class="fas fa-check check"></i> Manajemen produk tak terbatas</li>
+          <li><i class="fas fa-check check"></i> Payment gateway (Midtrans)</li>
+          <li><i class="fas fa-check check"></i> Manajemen order & invoice</li>
+          <li><i class="fas fa-check check"></i> SEO advanced</li>
+          <li><i class="fas fa-check check"></i> Dashboard admin</li>
+          <li><i class="fas fa-check check"></i> Laporan penjualan</li>
+          <li><i class="fas fa-check check"></i> Training & dokumentasi</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Pilih Paket</a>
+      </div>
+    </div>
+
+    <!-- UMKM SUBSCRIPTION -->
+    <div class="pricing-panel" id="panel-umkm">
+      <div class="price-card fade-up">
+        <div class="price-badge badge-affordable"><i class="fas fa-star"></i> Affordable</div>
+        <div class="price-name">Paket Basic UMKM</div>
+        <div class="price-amount"><sup>Rp</sup>2,4 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">≈ Rp 200rb / bln</span></div>
+        <div class="price-desc">Website UMKM siap pakai — hosting, domain & SSL sudah included semua</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> 3 halaman (Home, Produk, Kontak)</li>
+          <li><i class="fas fa-check check"></i> Template pilihan modern</li>
+          <li><i class="fas fa-check check"></i> Hosting & domain included</li>
+          <li><i class="fas fa-check check"></i> Update konten 2x/bulan</li>
+          <li><i class="fas fa-check check"></i> SSL gratis</li>
+          <li class="dim"><i class="fas fa-times cross"></i> Payment gateway</li>
+          <li class="dim"><i class="fas fa-times cross"></i> Custom desain</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Mulai Sekarang</a>
+      </div>
+
+      <div class="price-card featured fade-up fade-up-delay-1">
+        <div class="price-badge badge-umkm"><i class="fas fa-heart"></i> UMKM Favorite</div>
+        <div class="price-name">Paket Pro UMKM</div>
+        <div class="price-amount"><sup>Rp</sup>4,8 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">≈ Rp 400rb / bln</span></div>
+        <div class="price-desc">Website toko online UMKM profesional — desain custom + hosting + maintenance</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> 8 halaman lengkap</li>
+          <li><i class="fas fa-check check"></i> Desain custom brand Anda</li>
+          <li><i class="fas fa-check check"></i> Toko online + katalog produk</li>
+          <li><i class="fas fa-check check"></i> Payment gateway COD/Transfer</li>
+          <li><i class="fas fa-check check"></i> Update konten unlimited</li>
+          <li><i class="fas fa-check check"></i> Laporan pengunjung bulanan</li>
+          <li><i class="fas fa-check check"></i> Support WhatsApp</li>
+          <li><i class="fas fa-check check"></i> SEO dasar</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-primary" style="width:100%;justify-content:center;">Mulai Sekarang</a>
+      </div>
+
+      <div class="price-card fade-up fade-up-delay-2">
+        <div class="price-badge badge-popular"><i class="fas fa-bolt"></i> Growth</div>
+        <div class="price-name">Paket Business</div>
+        <div class="price-amount"><sup>Rp</sup>7,8 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">≈ Rp 650rb / bln</span></div>
+        <div class="price-desc">Website bisnis profesional lengkap — dari desain hingga pemasaran digital</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Website multi-halaman custom</li>
+          <li><i class="fas fa-check check"></i> Toko online + payment gateway penuh</li>
+          <li><i class="fas fa-check check"></i> Dashboard admin bisnis</li>
+          <li><i class="fas fa-check check"></i> Email marketing integration</li>
+          <li><i class="fas fa-check check"></i> Google Analytics lanjutan</li>
+          <li><i class="fas fa-check check"></i> SEO bulanan</li>
+          <li><i class="fas fa-check check"></i> Konten sosial media 4x/bulan</li>
+          <li><i class="fas fa-check check"></i> Priority support</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Mulai Sekarang</a>
+      </div>
+    </div>
+
+    <!-- APP -->
+    <div class="pricing-panel" id="panel-app">
+      <div class="price-card fade-up">
+        <div class="price-badge badge-affordable"><i class="fas fa-seedling"></i> Starter App</div>
+        <div class="price-name">Aplikasi Sederhana</div>
+        <div class="price-amount"><sup>Rp</sup>10 Jt</div>
+        <div class="price-period">one-time <span class="price-monthly">+Rp 1,8 Jt / thn maint.</span></div>
+        <div class="price-desc">Bangun sekali, maintenance tahunan hemat — aplikasi Android siap pakai</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Android (APK)</li>
+          <li><i class="fas fa-check check"></i> Hingga 5 fitur utama</li>
+          <li><i class="fas fa-check check"></i> Desain UI modern</li>
+          <li><i class="fas fa-check check"></i> Database cloud</li>
+          <li><i class="fas fa-check check"></i> Notifikasi push</li>
+          <li class="dim"><i class="fas fa-times cross"></i> iOS / App Store</li>
+          <li class="dim"><i class="fas fa-times cross"></i> Payment gateway</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Konsultasi</a>
+      </div>
+
+      <div class="price-card featured fade-up fade-up-delay-1">
+        <div class="price-badge badge-bestseller"><i class="fas fa-fire"></i> Best Seller</div>
+        <div class="price-name">Aplikasi Bisnis</div>
+        <div class="price-amount"><sup>Rp</sup>25 Jt</div>
+        <div class="price-period">one-time <span class="price-monthly">+Rp 3,6 Jt / thn maint.</span></div>
+        <div class="price-desc">Android + iOS sekali build, maintenance tahunan terjangkau — fitur bisnis lengkap</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Android + iOS (Cross-platform)</li>
+          <li><i class="fas fa-check check"></i> Hingga 15 fitur</li>
+          <li><i class="fas fa-check check"></i> Payment gateway Midtrans</li>
+          <li><i class="fas fa-check check"></i> Login sosial media</li>
+          <li><i class="fas fa-check check"></i> Admin dashboard web</li>
+          <li><i class="fas fa-check check"></i> Notifikasi & chat in-app</li>
+          <li><i class="fas fa-check check"></i> Publish ke Play Store</li>
+          <li><i class="fas fa-check check"></i> 3 bulan maintenance</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-primary" style="width:100%;justify-content:center;">Konsultasi</a>
+      </div>
+
+      <div class="price-card fade-up fade-up-delay-2">
+        <div class="price-badge badge-enterprise"><i class="fas fa-crown"></i> Enterprise</div>
+        <div class="price-name">Aplikasi Enterprise</div>
+        <div class="price-amount"><sup>Rp</sup>55 Jt+</div>
+        <div class="price-period">one-time <span class="price-monthly">maint. custom / thn</span></div>
+        <div class="price-desc">Solusi enterprise sekali build — microservices, cloud-native, maintenance fleksibel</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Android + iOS native/cross</li>
+          <li><i class="fas fa-check check"></i> Fitur tak terbatas</li>
+          <li><i class="fas fa-check check"></i> API & integrasi pihak ketiga</li>
+          <li><i class="fas fa-check check"></i> Cloud server management</li>
+          <li><i class="fas fa-check check"></i> CI/CD pipeline</li>
+          <li><i class="fas fa-check check"></i> Security audit</li>
+          <li><i class="fas fa-check check"></i> SLA & dedicated support</li>
+          <li><i class="fas fa-check check"></i> 6 bulan maintenance</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Konsultasi</a>
+      </div>
+    </div>
+
+    <!-- ERP -->
+    <div class="pricing-panel" id="panel-erp">
+      <div class="price-card fade-up">
+        <div class="price-badge badge-affordable"><i class="fas fa-building"></i> SME</div>
+        <div class="price-name">ERP Dasar</div>
+        <div class="price-amount"><sup>Rp</sup>6 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">≈ Rp 500rb / bln</span></div>
+        <div class="price-desc">Lisensi ERP tahunan — akses penuh + update fitur + support included</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Manajemen inventory</li>
+          <li><i class="fas fa-check check"></i> Laporan keuangan dasar</li>
+          <li><i class="fas fa-check check"></i> Manajemen pelanggan</li>
+          <li><i class="fas fa-check check"></i> Invoice & faktur</li>
+          <li><i class="fas fa-check check"></i> Multi-user (5 user)</li>
+          <li class="dim"><i class="fas fa-times cross"></i> HR & payroll</li>
+          <li class="dim"><i class="fas fa-times cross"></i> Multi-cabang</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Konsultasi</a>
+      </div>
+
+      <div class="price-card featured fade-up fade-up-delay-1">
+        <div class="price-badge badge-popular"><i class="fas fa-rocket"></i> Business</div>
+        <div class="price-name">ERP Business</div>
+        <div class="price-amount"><sup>Rp</sup>14,4 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">≈ Rp 1,2 Jt / bln</span></div>
+        <div class="price-desc">ERP bisnis lengkap — HR, payroll, multi-cabang, lisensi tahunan super hemat</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Semua fitur ERP Dasar</li>
+          <li><i class="fas fa-check check"></i> Modul HR & Payroll</li>
+          <li><i class="fas fa-check check"></i> Multi-cabang & gudang</li>
+          <li><i class="fas fa-check check"></i> CRM & sales pipeline</li>
+          <li><i class="fas fa-check check"></i> Laporan BI & analitik</li>
+          <li><i class="fas fa-check check"></i> Multi-user (20 user)</li>
+          <li><i class="fas fa-check check"></i> Integrasi marketplace</li>
+          <li><i class="fas fa-check check"></i> Training 2 hari</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-primary" style="width:100%;justify-content:center;">Konsultasi</a>
+      </div>
+
+      <div class="price-card fade-up fade-up-delay-2">
+        <div class="price-badge badge-enterprise"><i class="fas fa-crown"></i> Enterprise</div>
+        <div class="price-name">ERP Enterprise</div>
+        <div class="price-amount" style="font-size:30px;">Hubungi Kami</div>
+        <div class="price-period">/ tahun <span class="price-monthly">sesuai skala perusahaan</span></div>
+        <div class="price-desc">ERP enterprise — custom modul, integrasi API, lisensi & support tahunan penuh</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Custom modul sesuai kebutuhan</li>
+          <li><i class="fas fa-check check"></i> Integrasi ERP pihak ketiga</li>
+          <li><i class="fas fa-check check"></i> User tak terbatas</li>
+          <li><i class="fas fa-check check"></i> Multi-perusahaan</li>
+          <li><i class="fas fa-check check"></i> AI-powered analytics</li>
+          <li><i class="fas fa-check check"></i> Dedicated server</li>
+          <li><i class="fas fa-check check"></i> SLA 99.9% uptime</li>
+          <li><i class="fas fa-check check"></i> Training onsite</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Konsultasi</a>
+      </div>
+    </div>
+
+    <!-- AI CHATBOT -->
+    <div class="pricing-panel" id="panel-chatbot">
+      <div class="price-card fade-up">
+        <div class="price-badge badge-affordable"><i class="fab fa-whatsapp"></i> WhatsApp Only</div>
+        <div class="price-name">Chatbot WhatsApp</div>
+        <div class="price-amount"><sup>Rp</sup>2,4 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">≈ Rp 200rb / bln</span></div>
+        <div class="price-desc">Bot WhatsApp siap pakai — setup included, tanpa biaya tersembunyi, all-in</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> WhatsApp Business API</li>
+          <li><i class="fas fa-check check"></i> Auto-reply & FAQ otomatis</li>
+          <li><i class="fas fa-check check"></i> Menu interaktif (tombol & list)</li>
+          <li><i class="fas fa-check check"></i> Broadcast pesan (blast)</li>
+          <li><i class="fas fa-check check"></i> Laporan pesan masuk</li>
+          <li><i class="fas fa-check check"></i> Hingga 2.000 pesan/bulan</li>
+          <li class="dim"><i class="fas fa-times cross"></i> Telegram & Website</li>
+          <li class="dim"><i class="fas fa-times cross"></i> AI generatif (GPT)</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Mulai Sekarang</a>
+      </div>
+
+      <div class="price-card featured fade-up fade-up-delay-1">
+        <div class="price-badge badge-bestseller"><i class="fas fa-fire"></i> Best Seller</div>
+        <div class="price-name">Bundle 3 Platform</div>
+        <div class="price-amount"><sup>Rp</sup>4,8 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">≈ Rp 400rb / bln</span></div>
+        <div class="price-desc">3 platform sekaligus — WA, Telegram & Website, setup included, harga all-in</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> <b>WhatsApp</b> Business Bot</li>
+          <li><i class="fas fa-check check"></i> <b>Telegram</b> Bot (perintah & inline)</li>
+          <li><i class="fas fa-check check"></i> <b>Website</b> Live Chat Widget</li>
+          <li><i class="fas fa-check check"></i> Dashboard terpusat 1 panel</li>
+          <li><i class="fas fa-check check"></i> Auto-reply, menu, broadcast</li>
+          <li><i class="fas fa-check check"></i> Pesan tak terbatas</li>
+          <li><i class="fas fa-check check"></i> Notifikasi CS real-time</li>
+          <li class="dim"><i class="fas fa-times cross"></i> AI generatif (GPT)</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-primary" style="width:100%;justify-content:center;">Mulai Sekarang</a>
+      </div>
+
+      <div class="price-card fade-up fade-up-delay-2">
+        <div class="price-badge badge-enterprise"><i class="fas fa-brain"></i> AI Generatif</div>
+        <div class="price-name">AI Chatbot Pro (GPT)</div>
+        <div class="price-amount"><sup>Rp</sup>8,4 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">≈ Rp 700rb / bln</span></div>
+        <div class="price-desc">AI GPT di semua platform — jawab bebas, bukan sekadar script, all-in tahunan</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Semua platform (WA + TG + Web)</li>
+          <li><i class="fas fa-check check"></i> AI generatif berbasis GPT/LLM</li>
+          <li><i class="fas fa-check check"></i> Training data bisnis Anda</li>
+          <li><i class="fas fa-check check"></i> Jawab pertanyaan bebas & kontekstual</li>
+          <li><i class="fas fa-check check"></i> Handover otomatis ke CS manusia</li>
+          <li><i class="fas fa-check check"></i> Dashboard analitik & sentimen</li>
+          <li><i class="fas fa-check check"></i> Multi-bahasa (ID / EN)</li>
+          <li><i class="fas fa-check check"></i> Pesan tak terbatas</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Konsultasi Dulu</a>
+      </div>
+    </div>
+
+    <!-- AI VIDEO -->
+    <div class="pricing-panel" id="panel-video">
+      <div class="price-card fade-up">
+        <div class="price-badge badge-affordable"><i class="fas fa-play"></i> Short (15–30 detik)</div>
+        <div class="price-name">Paket Short Video</div>
+        <div class="price-amount"><sup>Rp</sup>4,8 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">60 video · ≈ Rp 400rb / bln</span></div>
+        <div class="price-desc">60 video pendek per tahun — Reels, TikTok & Stories 15–30 detik</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Durasi 15–30 detik</li>
+          <li><i class="fas fa-check check"></i> AI visual & footage otomatis</li>
+          <li><i class="fas fa-check check"></i> Text-to-speech narasi</li>
+          <li><i class="fas fa-check check"></i> Musik background royalty-free</li>
+          <li><i class="fas fa-check check"></i> Format 9:16 (vertikal) & 1:1</li>
+          <li><i class="fas fa-check check"></i> Subtitle otomatis</li>
+          <li><i class="fas fa-check check"></i> 1x revisi per video</li>
+          <li><i class="fas fa-check check"></i> Hak cipta penuh Anda</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Pesan Sekarang</a>
+      </div>
+
+      <div class="price-card featured fade-up fade-up-delay-1">
+        <div class="price-badge badge-bestseller"><i class="fas fa-fire"></i> Best Seller (30–60 detik)</div>
+        <div class="price-name">Paket Standard Video</div>
+        <div class="price-amount"><sup>Rp</sup>7,2 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">36 video · ≈ Rp 600rb / bln</span></div>
+        <div class="price-desc">36 video iklan per tahun — YouTube Shorts, FB Ads, promosi 30–60 detik</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Durasi 30–60 detik</li>
+          <li><i class="fas fa-check check"></i> AI avatar opsional</li>
+          <li><i class="fas fa-check check"></i> Script & narasi AI profesional</li>
+          <li><i class="fas fa-check check"></i> Voiceover AI natural (ID/EN)</li>
+          <li><i class="fas fa-check check"></i> Efek visual & transisi modern</li>
+          <li><i class="fas fa-check check"></i> Format 9:16, 16:9, 1:1</li>
+          <li><i class="fas fa-check check"></i> Subtitle 2 bahasa</li>
+          <li><i class="fas fa-check check"></i> 2x revisi per video</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-primary" style="width:100%;justify-content:center;">Pesan Sekarang</a>
+      </div>
+
+      <div class="price-card fade-up fade-up-delay-2">
+        <div class="price-badge badge-enterprise"><i class="fas fa-crown"></i> Premium (60–120 detik)</div>
+        <div class="price-name">Paket Premium Video</div>
+        <div class="price-amount"><sup>Rp</sup>9,6 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">12 video · ≈ Rp 800rb / bln</span></div>
+        <div class="price-desc">12 video sinematik per tahun — brand video & iklan YouTube 60–120 detik</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Durasi 60–120 detik</li>
+          <li><i class="fas fa-check check"></i> AI avatar HD + b-roll footage</li>
+          <li><i class="fas fa-check check"></i> Script storytelling brand</li>
+          <li><i class="fas fa-check check"></i> Voiceover profesional (opsional manusia)</li>
+          <li><i class="fas fa-check check"></i> Color grading sinematik</li>
+          <li><i class="fas fa-check check"></i> Semua format + thumbnail</li>
+          <li><i class="fas fa-check check"></i> Subtitle 2 bahasa</li>
+          <li><i class="fas fa-check check"></i> 3x revisi per video</li>
+        </ul>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Konsultasi Dulu</a>
+      </div>
+    </div>
+
+    <!-- EVENT TIKET -->
+    <div class="pricing-panel" id="panel-event">
+
+      <!-- Info box: Direct Disbursement -->
+      <div style="grid-column:1/-1;background:rgba(228,21,62,0.06);border:1px solid rgba(228,21,62,0.2);border-radius:16px;padding:18px 22px;display:flex;align-items:flex-start;gap:14px;margin-bottom:8px;" class="fade-up">
+        <i class="fas fa-info-circle" style="color:var(--red-light);margin-top:2px;flex-shrink:0;font-size:18px;"></i>
+        <div>
+          <b style="font-size:14px;">Apa itu Direct Disbursement?</b>
+          <p style="font-size:13px;color:var(--text-muted);margin-top:4px;line-height:1.65;">Dana tiket <b style="color:var(--text);">langsung masuk ke rekening bank Anda</b> saat tiket terjual — tanpa perlu menunggu event selesai. Opsi reguler (gratis) mencairkan dana H+3 setelah event. Direct Disbursement dikenai biaya tambahan namun sangat berguna untuk modal operasional event.</p>
+        </div>
+      </div>
+
+      <div class="price-card fade-up">
+        <div class="price-badge badge-affordable"><i class="fas fa-ticket-alt"></i> Pay-Per-Tiket</div>
+        <div class="price-name">Model Komisi Per Tiket</div>
+        <div class="price-amount"><sup>Rp</sup>5.000<span style="font-size:16px;font-weight:600;color:var(--text-muted);">/tiket</span></div>
+        <div class="price-period">Tanpa biaya tahunan — bayar hanya per tiket terjual</div>
+        <div class="price-desc">Tanpa investasi awal — cocok untuk EO pemula, mulai dari event pertama</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Landing page event profesional</li>
+          <li><i class="fas fa-check check"></i> Tiket digital + QR code check-in</li>
+          <li><i class="fas fa-check check"></i> Payment: QRIS, Transfer, e-Wallet</li>
+          <li><i class="fas fa-check check"></i> Laporan peserta real-time</li>
+          <li><i class="fas fa-check check"></i> Dana cair H+3 setelah event (<b style="color:var(--text);">Gratis</b>)</li>
+          <li><i class="fas fa-check check"></i> Direct Disbursement: <b style="color:var(--red-light);">+Rp 2.500/tiket</b></li>
+          <li class="dim"><i class="fas fa-times cross"></i> Multi-tier tiket</li>
+          <li class="dim"><i class="fas fa-times cross"></i> Kode promo & diskon</li>
+        </ul>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;padding:10px 12px;background:rgba(255,255,255,0.03);border-radius:8px;">
+          💡 Contoh: 1.000 tiket × Rp 5.000 = <b style="color:var(--text);">Rp 5 Jt</b> biaya platform
+        </div>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Mulai Gratis</a>
+      </div>
+
+      <div class="price-card featured fade-up fade-up-delay-1">
+        <div class="price-badge badge-bestseller"><i class="fas fa-fire"></i> Best Seller</div>
+        <div class="price-name">Paket Flat 1.000 Tiket</div>
+        <div class="price-amount"><sup>Rp</sup>6 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">≈ Rp 500rb / bln</span></div>
+        <div class="price-desc">Kuota 1.000 tiket/tahun — harga flat, tanpa biaya per tiket, hemat maksimal</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Kuota 1.000 tiket terjual</li>
+          <li><i class="fas fa-check check"></i> Multi-tier tiket (VIP, Reguler, dll)</li>
+          <li><i class="fas fa-check check"></i> QR scanner app (Android)</li>
+          <li><i class="fas fa-check check"></i> Kode promo & diskon fleksibel</li>
+          <li><i class="fas fa-check check"></i> Dashboard organizer lengkap</li>
+          <li><i class="fas fa-check check"></i> WA blast ke peserta</li>
+          <li><i class="fas fa-check check"></i> Dana cair H+1 setelah event (<b style="color:var(--text);">Gratis</b>)</li>
+          <li><i class="fas fa-check check"></i> Direct Disbursement: <b style="color:var(--red-light);">+Rp 1,5 Jt</b></li>
+        </ul>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;padding:10px 12px;background:rgba(255,255,255,0.03);border-radius:8px;">
+          💡 Jika tiket habis, tambah kuota 500 tiket hanya <b style="color:var(--text);">Rp 3 Jt</b>
+        </div>
+        <a href="https://wa.me/6285117758656" class="btn btn-primary" style="width:100%;justify-content:center;">Pesan Sekarang</a>
+      </div>
+
+      <div class="price-card fade-up fade-up-delay-2">
+        <div class="price-badge badge-enterprise"><i class="fas fa-crown"></i> Enterprise EO</div>
+        <div class="price-name">Paket Enterprise + Direct</div>
+        <div class="price-amount"><sup>Rp</sup>15 Jt</div>
+        <div class="price-period">/ tahun <span class="price-monthly">≈ Rp 1,25 Jt / bln</span></div>
+        <div class="price-desc">Tiket tak terbatas + Direct Disbursement included — solusi EO skala besar</div>
+        <ul class="price-features">
+          <li><i class="fas fa-check check"></i> Tiket tak terbatas</li>
+          <li><i class="fas fa-check check"></i> <b style="color:var(--red-light);">Direct Disbursement GRATIS</b> (real-time ke rekening)</li>
+          <li><i class="fas fa-check check"></i> Multi-event dalam 1 dashboard</li>
+          <li><i class="fas fa-check check"></i> White label brand Anda</li>
+          <li><i class="fas fa-check check"></i> Sponsorship & booth management</li>
+          <li><i class="fas fa-check check"></i> Laporan keuangan lengkap</li>
+          <li><i class="fas fa-check check"></i> Integrasi livestream / hybrid event</li>
+          <li><i class="fas fa-check check"></i> SLA & dedicated support</li>
+        </ul>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:16px;padding:10px 12px;background:rgba(255,255,255,0.03);border-radius:8px;">
+          💡 Dana masuk rekening real-time saat setiap tiket terjual
+        </div>
+        <a href="https://wa.me/6285117758656" class="btn btn-outline" style="width:100%;justify-content:center;">Konsultasi Enterprise</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="section">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto;">
+      <div class="section-label fade-up"><i class="fas fa-briefcase"></i> Portfolio</div>
+      <h2 class="section-title fade-up fade-up-delay-1">Karya <span class="gradient-text">Terbaik</span><br />yang Telah Kami Bangun</h2>
+      <p class="section-sub fade-up fade-up-delay-2" style="margin:0 auto;">Project nyata yang telah kami bangun — website profesional, platform event tiket, dan sistem digital untuk klien dari berbagai industri.</p>
+    </div>
+    <div class="portfolio-filter fade-up">
+      <button class="filter-btn active" data-filter="all">Semua</button>
+      <button class="filter-btn" data-filter="web">Website</button>
+      <button class="filter-btn" data-filter="event">Event Platform</button>
+      <button class="filter-btn" data-filter="erp">ERP System</button>
+    </div>
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card fade-up" data-cat="event">
+        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#1a0a1e,#3d0f2e);">
+          🎫
+          <div class="portfolio-overlay">
+            <a href="https://pintuacara.com" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Kunjungi</a>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-cat">Event Platform</div>
+          <div class="portfolio-title">pintuacara.com</div>
+          <div class="portfolio-desc">Platform tiket event digital profesional — penjualan tiket online, QR check-in, dan manajemen event lengkap.</div>
+          <div class="portfolio-tech">
+            <span class="tech-tag">Event Platform</span><span class="tech-tag">Payment Gateway</span><span class="tech-tag">QR Ticket</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up fade-up-delay-1" data-cat="web">
+        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#0a1628,#0f2d5e);">
+          🏢
+          <div class="portfolio-overlay">
+            <a href="https://joudahgroup.com" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Kunjungi</a>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-cat">Company Profile</div>
+          <div class="portfolio-title">joudahgroup.com</div>
+          <div class="portfolio-desc">Website company profile premium untuk Joudah Group — tampil profesional, modern, dan SEO-friendly.</div>
+          <div class="portfolio-tech">
+            <span class="tech-tag">Company Profile</span><span class="tech-tag">CMS</span><span class="tech-tag">SEO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up fade-up-delay-2" data-cat="web">
+        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#0f1a0a,#1a3d10);">
+          💻
+          <div class="portfolio-overlay">
+            <a href="https://noorly.digital" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Kunjungi</a>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-cat">Digital Agency Website</div>
+          <div class="portfolio-title">noorly.digital</div>
+          <div class="portfolio-desc">Website digital agency modern dengan desain premium, animasi halus, dan performa tinggi.</div>
+          <div class="portfolio-tech">
+            <span class="tech-tag">Agency Website</span><span class="tech-tag">Animasi</span><span class="tech-tag">Modern UI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up" data-cat="web">
+        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#1a1000,#3d2800);">
+          📊
+          <div class="portfolio-overlay">
+            <a href="https://sahamara.com" target="_blank" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Kunjungi</a>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-cat">Website Bisnis</div>
+          <div class="portfolio-title">sahamara.com</div>
+          <div class="portfolio-desc">Website bisnis profesional dengan tampilan bersih, responsif, dan teroptimasi untuk konversi.</div>
+          <div class="portfolio-tech">
+            <span class="tech-tag">Business Website</span><span class="tech-tag">Responsive</span><span class="tech-tag">SEO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-card fade-up fade-up-delay-1" data-cat="erp">
+        <div class="portfolio-thumb" style="background:linear-gradient(135deg,#0a0a1a,#1a1a3d);">
+          ⚙️
+          <div class="portfolio-overlay">
+            <button class="overlay-btn" style="cursor:default;opacity:0.7;"><i class="fas fa-lock"></i> Confidential</button>
+          </div>
+        </div>
+        <div class="portfolio-info">
+          <div class="portfolio-cat">ERP System</div>
+          <div class="portfolio-title">ERP — Klien Korporat (Confidential)</div>
+          <div class="portfolio-desc">Sistem ERP terintegrasi untuk manajemen operasional, keuangan, dan SDM perusahaan skala menengah.</div>
+          <div class="portfolio-tech">
+            <span class="tech-tag">ERP</span><span class="tech-tag">Laravel</span><span class="tech-tag">MySQL</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section">
+  <div class="mesh-bg" style="width:500px;height:500px;background:radial-gradient(circle,rgba(228,21,62,0.1),transparent);top:0;right:-200px;"></div>
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto;">
+      <div class="section-label fade-up"><i class="fas fa-quote-left"></i> Testimoni</div>
+      <h2 class="section-title fade-up fade-up-delay-1">Apa Kata <span class="gradient-text">Klien Kami</span></h2>
+      <p class="section-sub fade-up fade-up-delay-2" style="margin:0 auto;">150+ klien puas dari seluruh Indonesia telah mempercayakan proyek digital mereka kepada kami.</p>
+    </div>
+    <div class="testi-grid">
+
+      <div class="testi-card fade-up">
+        <div class="testi-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="testi-quote">"CV Tumbuh Bersama Digital benar-benar membantu bisnis saya naik level. Website yang mereka buat tampil profesional dan langsung berdampak pada kepercayaan klien. Prosesnya cepat, tim-nya responsif. Highly recommended!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#e4153e,#b01030);">AJ</div>
+          <div>
+            <div class="testi-name">Abdul Jalil</div>
+            <div class="testi-role">Owner, Klien Website</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up fade-up-delay-1">
+        <div class="testi-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="testi-quote">"Platform tiket event dari CV Tumbuh Bersama Digital sangat memudahkan manajemen event kami. Penjualan tiket berjalan mulus, QR check-in lancar, dan direct disbursement-nya membantu sekali untuk cash flow. Terima kasih!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#7c3aed,#4f46e5);">AA</div>
+          <div>
+            <div class="testi-name">Achmad Arfan</div>
+            <div class="testi-role">Event Organizer</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up fade-up-delay-2">
+        <div class="testi-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="testi-quote">"Awalnya ragu karena usaha saya masih kecil, tapi paket UMKM-nya sangat terjangkau dan hasilnya luar biasa! Website saya sekarang terlihat seperti brand besar. Pelanggan lebih percaya dan pesanan makin banyak."</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#059669,#047857);">YY</div>
+          <div>
+            <div class="testi-name">Yuyun</div>
+            <div class="testi-role">Owner UMKM</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up">
+        <div class="testi-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="testi-quote">"Tim CV Tumbuh Bersama Digital sabar banget dalam menjelaskan dan mengerjakan project. Saya tidak terlalu paham teknologi tapi mereka membimbing dengan baik. Hasilnya memuaskan dan sesuai ekspektasi. Pasti balik lagi!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#d97706,#b45309);">RK</div>
+          <div>
+            <div class="testi-name">Rukiah</div>
+            <div class="testi-role">Pemilik Usaha</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up fade-up-delay-1">
+        <div class="testi-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="testi-quote">"ERP yang dibangun oleh CV Tumbuh Bersama Digital sangat mengubah cara kami mengelola bisnis. Semua data terpusat, laporan instan, dan tim manajemen kami jadi jauh lebih efisien. Investasi yang benar-benar terbayar."</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#0284c7,#0369a1);">SL</div>
+          <div>
+            <div class="testi-name">Sultan</div>
+            <div class="testi-role">Direktur, Klien ERP</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up fade-up-delay-2">
+        <div class="testi-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <div class="testi-quote">"Pelayanannya ramah dan hasil kerjanya rapi sekali. Website toko saya sekarang bisa diakses dengan mudah di HP dan tampil cantik. Banyak pelanggan yang tanya 'siapa yang buat websitenya?' — bangga bisa rekomendasikan CV Tumbuh Bersama Digital!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#dc2626,#991b1b);">SW</div>
+          <div>
+            <div class="testi-name">Sarwati</div>
+            <div class="testi-role">Pemilik Toko Online</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto;">
+      <div class="section-label fade-up"><i class="fas fa-question-circle"></i> FAQ</div>
+      <h2 class="section-title fade-up fade-up-delay-1">Pertanyaan yang <span class="gradient-text">Sering Ditanya</span></h2>
+      <p class="section-sub fade-up fade-up-delay-2" style="margin:0 auto;">Temukan jawaban atas pertanyaan umum seputar layanan dan proses kerja kami.</p>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item fade-up">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Berapa lama proses pengerjaan website?</span>
+          <div class="faq-icon"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-a">
+          Waktu pengerjaan bergantung pada kompleksitas project. Landing page biasanya 3–5 hari kerja, company profile 7–14 hari kerja, dan e-commerce 3–6 minggu. Kami selalu berkomitmen untuk menyelesaikan sesuai deadline yang disepakati.
+        </div>
+      </div>
+
+      <div class="faq-item fade-up fade-up-delay-1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Apakah ada konsultasi gratis sebelum mulai project?</span>
+          <div class="faq-icon"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-a">
+          Ya! Kami menyediakan konsultasi gratis tanpa batas waktu sebelum Anda memutuskan untuk bekerja sama. Anda bisa menghubungi kami via WhatsApp, email, atau mengisi form konsultasi di website ini. Tim kami siap membantu menganalisis kebutuhan bisnis Anda.
+        </div>
+      </div>
+
+      <div class="faq-item fade-up fade-up-delay-2">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Apakah harga sudah termasuk hosting dan domain?</span>
+          <div class="faq-icon"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-a">
+          Sebagian besar paket website kami sudah termasuk hosting cloud dan domain .com/.id gratis untuk 1 tahun pertama. Setelah tahun pertama, biaya perpanjangan hosting berkisar Rp 500.000–Rp 1.500.000/tahun tergantung paket yang dipilih.
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Bagaimana sistem pembayaran dan cicilan?</span>
+          <div class="faq-icon"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-a">
+          Sistem pembayaran kami fleksibel: DP 50% di awal, 50% saat selesai. Untuk project besar di atas Rp 20 juta, tersedia cicilan 3x. Kami menerima transfer bank (BCA, Mandiri, BRI), QRIS, dan e-wallet (GoPay, OVO, Dana).
+        </div>
+      </div>
+
+      <div class="faq-item fade-up fade-up-delay-1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Berapa kali revisi yang diperbolehkan?</span>
+          <div class="faq-icon"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-a">
+          Setiap paket memiliki jumlah revisi berbeda (3x–unlimited sesuai paket). Revisi mencakup perubahan konten, warna, tata letak, dan fitur minor. Perubahan besar yang mengubah scope project akan didiskusikan biaya tambahannya secara transparan.
+        </div>
+      </div>
+
+      <div class="faq-item fade-up fade-up-delay-2">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Apakah ada garansi setelah project selesai?</span>
+          <div class="faq-icon"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-a">
+          Ya! Kami memberikan garansi bug fixing gratis selama 30 hari setelah launch untuk paket website, dan 60–90 hari untuk project aplikasi dan ERP. Setelah masa garansi, tersedia paket maintenance bulanan dengan harga terjangkau.
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Apakah bisa custom sesuai kebutuhan spesifik bisnis saya?</span>
+          <div class="faq-icon"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-a">
+          Tentu! Semua paket kami bisa dikustomisasi sesuai kebutuhan spesifik Anda. Bahkan kami menyediakan layanan custom development penuh untuk bisnis dengan kebutuhan unik. Hubungi kami untuk berdiskusi dan mendapatkan penawaran yang paling sesuai.
+        </div>
+      </div>
+
+      <div class="faq-item fade-up fade-up-delay-1">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Apakah CV Tumbuh Bersama Digital berpengalaman di industri saya?</span>
+          <div class="faq-icon"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-a">
+          Dengan 200+ project dari berbagai industri — kuliner, fashion, properti, event, manufaktur, pendidikan, healthcare, dan fintech — kami memiliki pengalaman luas. Tim kami juga melakukan riset mendalam untuk setiap industri baru agar solusi yang kami berikan tepat sasaran.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="mesh-bg" style="width:600px;height:600px;background:radial-gradient(circle,rgba(228,21,62,0.15),transparent);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+  <div class="container">
+    <div class="cta-inner fade-up">
+      <div class="section-label" style="margin:0 auto 24px;display:table;"><i class="fas fa-rocket"></i> Mulai Sekarang</div>
+      <h2 class="cta-title">Siap Transformasi <span class="gradient-text">Digital</span><br />Bisnis Anda?</h2>
+      <p class="cta-sub">Konsultasikan kebutuhan digital Anda bersama tim ahli kami. Gratis, tanpa komitmen, dan tanpa tekanan.</p>
+      <div class="cta-btns">
+        <a href="https://wa.me/6285117758656" class="btn btn-primary" style="font-size:16px;padding:16px 32px;">
+          <i class="fas fa-rocket"></i> Konsultasi Sekarang — Gratis
+        </a>
+        <a href="https://wa.me/6285117758656" class="btn btn-wa" style="font-size:16px;padding:16px 32px;">
+          <i class="fab fa-whatsapp"></i> Hubungi WhatsApp
+        </a>
+        <a href="#portfolio" class="btn btn-outline" style="font-size:16px;padding:16px 32px;">
+          <i class="fas fa-eye"></i> Lihat Portfolio
+        </a>
+      </div>
+      <p style="margin-top:28px;font-size:13px;color:var(--text-muted);">
+        <i class="fas fa-clock" style="color:var(--red-light);margin-right:6px;"></i>
+        Biasanya kami membalas dalam &lt; 1 jam pada hari kerja
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="Logo.png" alt="Logo" />
+          <div class="footer-logo-name">CV Tumbuh Bersama<br /><span style="color:var(--red-light);">Digital</span></div>
+        </div>
+        <p class="footer-desc">
+          Partner digital terpercaya untuk UMKM, startup, dan bisnis menengah Indonesia. Kami menghadirkan solusi digital inovatif dengan teknologi terdepan dan harga terjangkau.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://wa.me/6285117758656" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Layanan</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Tiketing Event Platform</a></li>
+          <li><a href="#services">Pembuatan Website</a></li>
+          <li><a href="#services">Website UMKM</a></li>
+          <li><a href="#services">Pembuatan Aplikasi</a></li>
+          <li><a href="#services">ERP System</a></li>
+          <li><a href="#services">AI Video Generator</a></li>
+          <li><a href="#services">AI Chatbot</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Perusahaan</h4>
+        <ul class="footer-links">
+          <li><a href="#about">Tentang Kami</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#testimonials">Testimoni</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#">Blog & Tips</a></li>
+          <li><a href="#">Karir</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Kontak</h4>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Jl. Sudirman No. 123, Jakarta Pusat, DKI Jakarta 10220</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fab fa-whatsapp"></i>
+          <span>+62 851-1775-8656</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>halo@tumbuhbersama.digital</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-clock"></i>
+          <span>Senin–Jumat: 08.00–17.00 WIB</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        &copy; 2026 <span>CV Tumbuh Bersama Digital</span>. All rights reserved.
+      </div>
+      <div class="footer-legal">
+        <a href="#">Kebijakan Privasi</a>
+        <a href="#">Syarat & Ketentuan</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<a href="#" id="back-top" aria-label="Kembali ke atas">
+  <i class="fas fa-arrow-up"></i>
+</a>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('back-top').classList.toggle('show', window.scrollY > 400);
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // Pricing tabs
+  document.querySelectorAll('.pricing-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.pricing-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+    });
+  });
+
+  // Portfolio filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.portfolio-card').forEach(card => {
+        const match = filter === 'all' || card.dataset.cat === filter;
+        card.style.display = match ? '' : 'none';
+      });
+    });
+  });
+
+  // FAQ accordion
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const ans = item.querySelector('.faq-a');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-a').classList.remove('open');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      ans.classList.add('open');
+    }
+  }
+
+  // Intersection observer for fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
